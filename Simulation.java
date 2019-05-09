@@ -208,19 +208,11 @@ public class Simulation {
         	}
         	
         	if (!left && !right) {
-        		Point p2 = getPointFromDistanceAndRotation(0, 0, rob.vely, rob.rot);
-              	rob.x += p2.x;
-              	rob.y += p2.y;
+        		rob.doAction(3);
         	} else if (left) {
-        		Point p2 = getPointFromDistanceAndRotation(0, 0, rob.vely, rob.rot);
-              	rob.x += p2.x;
-              	rob.y += p2.y;
-              	rob.rot -= rob.velrot;
+        		rob.doAction(1);
         	} else if (right) {
-        		Point p2 = getPointFromDistanceAndRotation(0, 0, rob.vely, rob.rot);
-              	rob.x += p2.x;
-              	rob.y += p2.y;
-              	rob.rot += rob.velrot;
+        		rob.doAction(2);
         	}
         		
             
@@ -342,6 +334,25 @@ public class Simulation {
     			return true;
     		
     		return false;
+    	}
+    	
+    	public void doAction(int action) {
+    		if (action == 3) {
+    			Point p2 = getPointFromDistanceAndRotation(0, 0, this.vely, this.rot);
+              	this.x += p2.x;
+              	this.y += p2.y;    			
+    		} else if (action == 1) {
+    			Point p2 = getPointFromDistanceAndRotation(0, 0, this.vely, this.rot);
+              	this.x += p2.x;
+              	this.y += p2.y;
+              	this.rot -= this.velrot;
+    		} else if (action == 2) {
+    			Point p2 = getPointFromDistanceAndRotation(0, 0, this.vely, this.rot);
+              	this.x += p2.x;
+              	this.y += p2.y;
+              	this.rot += this.velrot;
+    		} 
+    		
     	}
     }
     
